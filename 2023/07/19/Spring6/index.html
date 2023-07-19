@@ -1,0 +1,797 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zyw">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="基于动力节点杜聚宾老师的课程对Spring框架知识的总结 Spring6OCP开闭原则对拓展开放，对修改关闭 DIP依赖倒置原则提倡面向抽象编程，面向接口编程，不要面向具体编程，让上层不再依赖下层 IoC控制反转控制反转（Inversion of Control)，是一种面向对象编程的设计思想，可以用来降低代码之间的耦合度，符合依赖倒置原则 核心思想：将对象创建的权利交出去，将对象和对象之间关系维">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hello Spring">
+<meta property="og:url" content="https://cqqzyw.github.io/2023/07/19/Spring6/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="基于动力节点杜聚宾老师的课程对Spring框架知识的总结 Spring6OCP开闭原则对拓展开放，对修改关闭 DIP依赖倒置原则提倡面向抽象编程，面向接口编程，不要面向具体编程，让上层不再依赖下层 IoC控制反转控制反转（Inversion of Control)，是一种面向对象编程的设计思想，可以用来降低代码之间的耦合度，符合依赖倒置原则 核心思想：将对象创建的权利交出去，将对象和对象之间关系维">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cqqzyw.github.io/image/Spring6/image1.png">
+<meta property="og:image" content="https://cqqzyw.github.io/image/Spring6/image.png">
+<meta property="og:image" content="https://cqqzyw.github.io/image/Spring6/image2.png">
+<meta property="og:image" content="https://cqqzyw.github.io/image/Spring6/image3.png">
+<meta property="og:image" content="https://cqqzyw.github.io/image/Spring6/image4.png">
+<meta property="article:published_time" content="2023-07-19T11:42:31.860Z">
+<meta property="article:modified_time" content="2023-07-19T12:20:06.843Z">
+<meta property="article:author" content="zyw">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cqqzyw.github.io/image/Spring6/image1.png">
+  
+  
+  
+  <title>Hello Spring - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"cqqzyw.github.io","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Hello Spring"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-07-19 19:42" pubdate>
+          July 19, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.4k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          54 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Hello Spring</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>基于动力节点<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Ft4y1g7Fb/?spm_id_from=333.999.0.0&vd_source=090e0183092aedfd3bb1894177a01779">杜聚宾</a>老师的课程对Spring框架知识的总结</p>
+<h2 id="Spring6"><a href="#Spring6" class="headerlink" title="Spring6"></a>Spring6</h2><h3 id="OCP开闭原则"><a href="#OCP开闭原则" class="headerlink" title="OCP开闭原则"></a>OCP开闭原则</h3><p>对拓展开放，对修改关闭</p>
+<h3 id="DIP依赖倒置原则"><a href="#DIP依赖倒置原则" class="headerlink" title="DIP依赖倒置原则"></a>DIP依赖倒置原则</h3><p>提倡面向抽象编程，面向接口编程，不要面向具体编程，让上层不再依赖下层</p>
+<h3 id="IoC控制反转"><a href="#IoC控制反转" class="headerlink" title="IoC控制反转"></a>IoC控制反转</h3><p>控制反转（Inversion of Control)，是一种面向对象编程的设计思想，可以用来降低代码之间的耦合度，符合依赖倒置原则</p>
+<p>核心思想：<strong>将对象创建的权利交出去，将对象和对象之间关系维护的管理权交出去，让第三方容器来负责创建和维护</strong></p>
+<p>方式：依赖注入（DI）</p>
+<h3 id="Spring8大模块"><a href="#Spring8大模块" class="headerlink" title="Spring8大模块"></a>Spring8大模块</h3><p>Spring5中加入了Spring WebFlux构成八大模块</p>
+<ul>
+<li>Spring Core模块：这是Spring框架最基础的部分，她提供了依赖注入特征来实现容器对Bean的管理。核心容器的主要组件是BeanFactory，BeanFactory是工厂模式的一个实现，是任何Spring的核心。它使用IoC将应用配置和依赖从实际的应用代码中分离出来</li>
+<li>Spring Context模块：Spring上下文模块就是Spring成为框架的原因。这个模块拓展了BeanFactory。增加了对国际化消息、事件传播、验证的支持。</li>
+<li>Spring AOP模块：面向切面编程</li>
+<li>Spring DAO模块：提供了单独的支持JDBC操作的API</li>
+<li>Spring ORM模块：Spring提供了ORM模块，也可以集成其他ORM，例如：MyBatis、Hibernate</li>
+<li>Spring Web MVC模块：Spring为构建Web应用提供了一个功能全面的MVC框架。</li>
+<li>Spring WebFlux模块</li>
+<li>Spring Web模块</li>
+</ul>
+<h3 id="Spring特点"><a href="#Spring特点" class="headerlink" title="Spring特点"></a>Spring特点</h3><p>轻量、控制反转、面向切面、容器、框架</p>
+<h3 id="set注入的实现原理"><a href="#set注入的实现原理" class="headerlink" title="set注入的实现原理"></a>set注入的实现原理</h3><p>通过反射机制调用该对象的set方法来给属性赋值，让两个对象之间产生关系</p>
+<h3 id="简单类型包括"><a href="#简单类型包括" class="headerlink" title="简单类型包括"></a>简单类型包括</h3><ul>
+<li>基本数据类型及其对应的包装类</li>
+<li>String或其他的CharSequence子类</li>
+<li>Number子类</li>
+<li>Date子类</li>
+<li>Enum子类</li>
+<li>URL</li>
+<li>URI</li>
+<li>Temporal子类</li>
+<li>Locale</li>
+<li>Class</li>
+</ul>
+<p>如果我们把Date当做简单类型的话，日期字符串格式不能随便写。格式必须符合Date的toString（）方法的格式</p>
+<h3 id="Bean对象的创建"><a href="#Bean对象的创建" class="headerlink" title="Bean对象的创建"></a>Bean对象的创建</h3><p>默认情况下Bean是单例的，此时Bean对象的创建是在初始化Spring上下文的时候完成的</p>
+<p>当Bean是多例的时，Bean对象的创建是在调用getBean（）方法时创建，并且调用一次创建一次</p>
+<h3 id="Bean作用域"><a href="#Bean作用域" class="headerlink" title="Bean作用域"></a>Bean作用域</h3><ul>
+<li>singleton：默认的，单例</li>
+<li>prototype：原型。每调用一次getBean（）方法则获取一个新的Bean对象。</li>
+<li>request：一个请求对应一个Bean</li>
+<li>session：一个对话一个Bean</li>
+<li>global session：protlet应用中专用</li>
+<li>application：一个应用一个Bean</li>
+<li>websocket：一个websocket一个Bean</li>
+<li>自定义scope</li>
+</ul>
+<h3 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h3><h4 id="工厂模式的三种形态："><a href="#工厂模式的三种形态：" class="headerlink" title="工厂模式的三种形态："></a>工厂模式的三种形态：</h4><ul>
+<li>简单工厂模式：很多物品对应一个工厂，不属于23种设计模式</li>
+<li>工厂方法模式：一个物品对应一个工厂</li>
+<li>抽象工厂模式</li>
+</ul>
+<h3 id="Bean的实例化"><a href="#Bean的实例化" class="headerlink" title="Bean的实例化"></a>Bean的实例化</h3><p>Bean实例化的方式：</p>
+<ul>
+<li>通过构造方法实例化：调用对象的无参构造进行实例化</li>
+<li>通过简单工厂实例化</li>
+<li>通过factory-bean实例化</li>
+<li>通过FactoryBean接口实例化</li>
+</ul>
+<p>factory-bean实例化和FactoryBean不一样。</p>
+<p>1.写法不一样，前者是通过两个<bean/>实现,后者是通过实现FactoryBean接口实现。</p>
+<p>2.实现时机不一样，前者是在创建spring容器时通过dom4j读取<bean/>标签中的内容创建。后者是在执行getBean()获取他时创建。</p>
+<h3 id="BeanFactory和FactoryBean的区别"><a href="#BeanFactory和FactoryBean的区别" class="headerlink" title="BeanFactory和FactoryBean的区别"></a>BeanFactory和FactoryBean的区别</h3><p>BeanFactory：Spring IoC容器的顶级对象，BeanFactory被翻译为“Bean工厂”，在Spring的IoC中，“Bean工厂”负责创建Bean对象。BeanFactory是工厂</p>
+<p>FactoryBean：它是一个Bean，是一个能够辅助Spring实例化其他Bean对象的一个Bean</p>
+<h3 id="Bean的生命周期"><a href="#Bean的生命周期" class="headerlink" title="Bean的生命周期"></a>Bean的生命周期</h3><p>以Bean生命周期之10步为例：</p>
+<ul>
+<li><p><strong>实例化Bean</strong>：调用无参数构造方法</p>
+</li>
+<li><p><strong>Bean属性赋值</strong>：调用set方法</p>
+</li>
+<li><p>检查Bean是否实现了Aware的相关接口，并设置相关依赖（BeanNameAware、BeanClassLoaderAware、BeanFactoryAware）如果要在实例化Bean时要执行某些代码就可以通过实现Aware接口来完成</p>
+</li>
+<li><p><strong>Bean后处理器before执行</strong></p>
+</li>
+<li><p>检查Bean是否实现了InitializingBean接口，并调用接口方法</p>
+</li>
+<li><p><strong>初始化Bean</strong>：调用init方法，这个init方法需要我们自己写</p>
+</li>
+<li><p><strong>Bean后处理器after执行</strong></p>
+</li>
+<li><p><strong>使用Bean</strong></p>
+</li>
+<li><p>检查Bean是否实现了DisposableBean接口，并调用接口方法</p>
+</li>
+<li><p><strong>销毁Bean</strong>：调用自己写的destory方法</p>
+<p>如果你想在初始化前和初始化后添加代码，可以加入“Bean后处理器”。</p>
+<p>编写一个类实现BeanPostProcessor类，并且重写before和after方法</p>
+</li>
+</ul>
+<h3 id="自己new的对象如何让Spring管理"><a href="#自己new的对象如何让Spring管理" class="headerlink" title="自己new的对象如何让Spring管理"></a>自己new的对象如何让Spring管理</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-comment">//自己new的对象</span><br>User user=<span class="hljs-keyword">new</span> <span class="hljs-title class_">User</span>();<br><span class="hljs-comment">//创建 默认可列表BeanFactory对象</span><br>DefaultListableBeanFactory factory=<span class="hljs-keyword">new</span> <span class="hljs-title class_">DefaultListableBeanFactory</span>();<br><span class="hljs-comment">//注册Bean</span><br>factory.registerSingleton(<span class="hljs-string">&quot;userBean&quot;</span>,user);<br><span class="hljs-comment">//从Spring中获取bean</span><br>User userBean=factory.getBean(<span class="hljs-string">&quot;userBean&quot;</span>,User.class);<br></code></pre></td></tr></table></figure>
+
+<h3 id="Bean的循环依赖问题"><a href="#Bean的循环依赖问题" class="headerlink" title="Bean的循环依赖问题"></a>Bean的循环依赖问题</h3><h4 id="singleton-set注入下"><a href="#singleton-set注入下" class="headerlink" title="singleton+set注入下"></a>singleton+set注入下</h4><p>在此情况下循环依赖是没有问题的</p>
+<h4 id="singleton-构造注入下"><a href="#singleton-构造注入下" class="headerlink" title="singleton+构造注入下"></a>singleton+构造注入下</h4><p>在此情况下是不能解决循环依赖问题，主要原因就是通过构造方法注入会导致实例化对象的过程和对象属性赋值的过程没有分离开，必须在一起完成导致的</p>
+<h4 id="Spring解决循环依赖问题的机理"><a href="#Spring解决循环依赖问题的机理" class="headerlink" title="Spring解决循环依赖问题的机理"></a>Spring解决循环依赖问题的机理</h4><p>通过singleton+set注入这种方式，将实例化对象和给对象属性赋值分开完成</p>
+<p>实例化Bean的时候：调用无参数构造方法来完成。<strong>此时可以先不给属性赋值，可以提前将该Bean对象“曝光”给外界</strong></p>
+<p>给Bean属性赋值的时候：调用setter方法来完成</p>
+<p>这两个步骤是完全分离开来完成</p>
+<h3 id="Bean的缓存问题"><a href="#Bean的缓存问题" class="headerlink" title="Bean的缓存问题"></a>Bean的缓存问题</h3><p>Bean的三级缓存：</p>
+<ul>
+<li>一级缓存（单例对象的缓存）：key存储bean名称，value存储Bean对象</li>
+<li>二级缓存（早期单例对象的缓存）：key存储bean名称，value存储早期的Bean</li>
+<li>三级缓存（单例工厂缓存）：key存储bean名称，value存储该Bean的ObjectFactory对象</li>
+</ul>
+<p>在DefaultSingletonBeanRegistry类中有一个addSingletonFactory（）方法，这个方法的作用是：将创建Bean对象的ObjectFactory对象提前曝光</p>
+<p><img src="/image/Spring6/image1.png" srcset="/img/loading.gif" lazyload></p>
+<p>从源码分析可知：</p>
+<p><img src="/image/Spring6/image.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="声明Bean的注解"><a href="#声明Bean的注解" class="headerlink" title="声明Bean的注解"></a>声明Bean的注解</h3><ul>
+<li>@Component</li>
+<li>@Controller</li>
+<li>@Service</li>
+<li>@Repository</li>
+</ul>
+<p><img src="/image/Spring6/image2.png" srcset="/img/loading.gif" lazyload></p>
+<p>value是可以省略的，省略后默认名字是Bean类名首字母小写</p>
+<h3 id="负责注入的注解"><a href="#负责注入的注解" class="headerlink" title="负责注入的注解"></a>负责注入的注解</h3><ul>
+<li><p>@Value：简单类型进行注入</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">package</span> com.powernode.spring6.bean4;<br><br><span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Value;<br><span class="hljs-keyword">import</span> org.springframework.stereotype.Component;<br><br><span class="hljs-meta">@Component</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">User</span> &#123;<br>    <span class="hljs-meta">@Value(value = &quot;zhangsan&quot;)</span><br>    <span class="hljs-keyword">private</span> String name;<br>    <span class="hljs-meta">@Value(&quot;20&quot;)</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> age;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">toString</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;User&#123;&quot;</span> +<br>                <span class="hljs-string">&quot;name=&#x27;&quot;</span> + name + <span class="hljs-string">&#x27;\&#x27;&#x27;</span> +<br>                <span class="hljs-string">&quot;, age=&quot;</span> + age +<br>                <span class="hljs-string">&#x27;&#125;&#x27;</span>;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>@Autowired：默认通过类型自动装配</p>
+</li>
+<li><p>@Qualifier：中指定Bean名称</p>
+<p>这两个注解要结合起来使用，@Autowired根据类型自动装配，@Qualifier根据名字进行自动装配</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">package</span> com.powernode.spring6.service;<br><br><span class="hljs-keyword">import</span> com.powernode.spring6.dao.UserDao;<br><span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;<br><span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Qualifier;<br><span class="hljs-keyword">import</span> org.springframework.stereotype.Service;<br><br><span class="hljs-meta">@Service</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UserService</span> &#123;<br><br>    <span class="hljs-keyword">private</span> UserDao userDao;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-meta">@Qualifier(&quot;userDaoForOracle&quot;)</span> <span class="hljs-comment">// 这个是bean的名字。</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setUserDao</span><span class="hljs-params">(UserDao userDao)</span> &#123;<br>        <span class="hljs-built_in">this</span>.userDao = userDao;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">save</span><span class="hljs-params">()</span>&#123;<br>        userDao.insert();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>@Autowired注解可以出现在：属性上、构造方法上、构造方法的参数上、setter方法上</p>
+<p>当带参数的构造方法只有一个，@Autowired可以省略</p>
+<p>@Autowired注解默认根据类型注入。如果要根据名称注入的话，需要配合@Qualifier注解一起使用</p>
+</li>
+<li><p>@Resource</p>
+<p>该注解是JDK扩展包中的，就是说是JDK的一部分，@Autowired是Spring框架自己的</p>
+<p>@Resource注解默认根据名称装配byName，未指定name时，使用属性名作为name。通过name找不到的话会自动启动通过类型byType装配</p>
+<p>@Resource注解可以用到属性上、setter方法上</p>
+</li>
+</ul>
+<h3 id="Spring的全注解式开发"><a href="#Spring的全注解式开发" class="headerlink" title="Spring的全注解式开发"></a>Spring的全注解式开发</h3><p>通过以下配置来代替xml文件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-meta">@Configuration</span><br><span class="hljs-meta">@ComponentScan(&#123;&quot;com.powernode.spring6.da0&quot;,&quot;com.powernode.spring6.service&quot;&#125;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Spring6Configuration</span>()&#123;<br>    <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h3><h4 id="JDK动态代理"><a href="#JDK动态代理" class="headerlink" title="JDK动态代理"></a>JDK动态代理</h4><p>JDK动态代理：只能代理接口，<strong>通过反射机制来动态代理</strong></p>
+<p>CGLIB动态代理：是一个强大的，高性能的，高质量的Code生成类库，它可以在运行期间扩展Java类与实现Java接口。它既可以代理接口也可以代理类，<strong>底层是通过继承的方式实现的</strong>。性能比JDK动态代理要好（底层是一个小而快的字节码处理框架ASM）</p>
+<p>javassist动态代理：通过使用javassist对字节码操作作为JBoss实现动态“AOP”框架</p>
+<h3 id="面向切面编程AOP"><a href="#面向切面编程AOP" class="headerlink" title="面向切面编程AOP"></a>面向切面编程AOP</h3><h4 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h4><p>一般一个系统当中都会有一些系统服务，例如：日志、事务管理、安全等。这些系统服务被称为：<strong>交叉业务</strong></p>
+<p>AOP：将于核心业务无关的代码独立的抽取出来，形成一个独立的组件，然后以横向交叉的方法应用到业务流程当中的过程被称为AOP</p>
+<p><img src="/image/Spring6/image3.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="AOP的七大术语"><a href="#AOP的七大术语" class="headerlink" title="AOP的七大术语"></a>AOP的七大术语</h4><ul>
+<li><p>连接点Joinpoint</p>
+</li>
+<li><p>切点Pointcut</p>
+</li>
+<li><p>通知Advice</p>
+</li>
+<li><p>切面Aspect</p>
+<p>切面&#x3D;切点+通知</p>
+</li>
+<li><p>织入</p>
+</li>
+<li><p>代理对象</p>
+</li>
+<li><p>目标对象</p>
+</li>
+</ul>
+<p><img src="/image/Spring6/image4.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="切点表达式"><a href="#切点表达式" class="headerlink" title="切点表达式"></a>切点表达式</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs java">execution([访问控制权限修饰符] 返回值类型 [全限定类名] 方法名(形式参数列表) [异常])<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">访问控制权限修饰符：</span><br><span class="hljs-comment">   可选项。</span><br><span class="hljs-comment">   没写，就是4个权限都包括。</span><br><span class="hljs-comment">   写public就表示只包括公开的方法。</span><br><span class="hljs-comment">返回值类型：</span><br><span class="hljs-comment">   必填项。</span><br><span class="hljs-comment">   * 表示返回值类型任意。</span><br><span class="hljs-comment">全限定类名：</span><br><span class="hljs-comment">   可选项。</span><br><span class="hljs-comment">   两个点“..”代表当前包以及子包下的所有类。</span><br><span class="hljs-comment">   省略时表示所有的类。</span><br><span class="hljs-comment">方法名：</span><br><span class="hljs-comment">   必填项。</span><br><span class="hljs-comment">   *表示所有方法。</span><br><span class="hljs-comment">   set*表示所有的set方法。</span><br><span class="hljs-comment">形式参数列表：</span><br><span class="hljs-comment">   必填项</span><br><span class="hljs-comment">   () 表示没有参数的方法</span><br><span class="hljs-comment">   (..) 参数类型和个数随意的方法</span><br><span class="hljs-comment">   (*) 只有一个参数的方法</span><br><span class="hljs-comment">   (*, String) 第一个参数类型随意，第二个参数是String的。</span><br><span class="hljs-comment">异常：</span><br><span class="hljs-comment">   可选项。</span><br><span class="hljs-comment">   省略时表示任意异常类型</span><br><span class="hljs-comment">*/</span><br><span class="hljs-comment">//service包下所有的类中以delete开始的所有方法</span><br>   execution(<span class="hljs-keyword">public</span> * com.powernode.service.*.delete*(..)) <br></code></pre></td></tr></table></figure>
+
+<h3 id="Spring中对事务的控制"><a href="#Spring中对事务的控制" class="headerlink" title="Spring中对事务的控制"></a>Spring中对事务的控制</h3><h4 id="声明式事务（Transaction）"><a href="#声明式事务（Transaction）" class="headerlink" title="声明式事务（Transaction）"></a>声明式事务（Transaction）</h4><p><code>@Transaction</code> 注解的底层原理涉及到 Spring 框架的两个核心机制：AOP（面向切面编程）和事务管理。</p>
+<p>当一个方法被 <code>@Transaction</code> 注解标注后，Spring 会使用 AOP 机制，将事务管理的逻辑从业务逻辑中分离出来，并动态地生成一个代理对象。代理对象会包装原始对象，并在原始对象的方法执行前后添加一些事务管理的逻辑，比如开启事务、提交事务或回滚事务等。</p>
+<p>具体来说，Spring 通过使用 JDK 动态代理或 CGLIB（Code Generation Library）字节码生成技术，在运行时动态地生成代理对象。当一个被 <code>@Transaction</code> 注解标注的方法被调用时，实际上是调用了代理对象的方法。代理对象会在方法执行前后织入事务管理的逻辑，实现事务的自动管理。</p>
+<p>当方法执行成功时，代理对象会提交事务，将数据库中的数据持久化。如果方法执行失败，代理对象会回滚事务，保证数据的一致性和完整性。</p>
+<p>总之，<code>@Transaction</code> 注解的底层原理是通过 AOP 机制和事务管理机制相结合实现的。通过动态生成代理对象，在原始对象的方法执行前后添加事务管理的逻辑，从而实现了自动的事务管理。</p>
+<h4 id="Spring中事务失效的情况"><a href="#Spring中事务失效的情况" class="headerlink" title="Spring中事务失效的情况"></a>Spring中事务失效的情况</h4><ol>
+<li>方法没有被 Spring 托管：Spring 只能管理由 Spring 容器管理的 bean，如果一个方法不是由 Spring 容器管理的，那么 Spring 将无法管理它的事务，事务也就会失效。（非代理对象不会被Spring托管，所以非代理对象的事务也不会生效）</li>
+<li>事务传播属性设置不当：事务传播属性可以控制事务在多个方法调用时的行为。如果事务传播属性设置不当，比如使用了 <code>Propagation.REQUIRES_NEW</code> 传播属性，那么将会导致当前事务挂起，新的事务被启动，从而导致事务失效。</li>
+<li>异常没有被正确处理：Spring 的事务管理机制默认情况下只会对受检查的异常（Checked Exception）进行回滚操作。如果业务逻辑中抛出了未受检查的异常（Unchecked Exception）或 Error，而且没有正确地处理这些异常，那么就可能导致事务失效。</li>
+<li>事务的边界设置不当：事务的边界应该设置在包含所有涉及到数据库操作的方法的最外层，如果事务的边界设置不当，可能会导致某些数据库操作没有被包含在事务中，从而导致事务失效。</li>
+<li>数据库表引擎不支持事务：一些数据库表引擎，比如 MyISAM，不支持事务。如果在使用这些数据库表引擎的情况下尝试进行事务管理，那么事务将无法生效。</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Hello Spring</div>
+      <div>https://cqqzyw.github.io/2023/07/19/Spring6/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>zyw</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>July 19, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/07/19/JVM/" title="Hello JVM">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Hello JVM</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/07/19/hello-world/" title="Hello World">
+                        <span class="hidden-mobile">Hello World</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
