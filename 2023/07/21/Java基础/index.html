@@ -16,21 +16,22 @@
   <meta name="author" content="zyw">
   <meta name="keywords" content="">
   
-    <meta name="description" content="有关C++难于理解的知识">
+    <meta name="description" content="在刷题当中遇到的经常犯错的问题的总结">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C++基础知识">
-<meta property="og:url" content="https://cqqzyw.github.io/2023/07/20/C++/index.html">
+<meta property="og:title" content="Java基础">
+<meta property="og:url" content="https://cqqzyw.github.io/2023/07/21/Java%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="有关C++难于理解的知识">
+<meta property="og:description" content="在刷题当中遇到的经常犯错的问题的总结">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-07-20T04:00:07.708Z">
-<meta property="article:modified_time" content="2023-07-20T12:00:41.068Z">
+<meta property="article:published_time" content="2023-07-21T07:58:39.683Z">
+<meta property="article:modified_time" content="2023-07-21T08:24:18.925Z">
 <meta property="article:author" content="zyw">
+<meta property="article:tag" content="java基础">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>C++基础知识 - Hexo</title>
+  <title>Java基础 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -184,7 +185,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="C++基础知识"></span>
+            <span id="subtitle" data-typed-text="Java基础"></span>
           
         </div>
 
@@ -195,8 +196,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-07-20 12:00" pubdate>
-          July 20, 2023 pm
+        <time datetime="2023-07-21 15:58" pubdate>
+          July 21, 2023 pm
         </time>
       </span>
     
@@ -207,7 +208,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.8k words
+          2.6k words
         
       </span>
     
@@ -218,7 +219,7 @@
         
         
         
-          15 mins
+          22 mins
         
       </span>
     
@@ -255,30 +256,59 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">C++基础知识</h1>
+            <h1 id="seo-header">Java基础</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="指针、常量指针、指针常量的区别"><a href="#指针、常量指针、指针常量的区别" class="headerlink" title="指针、常量指针、指针常量的区别"></a>指针、常量指针、指针常量的区别</h2><p>指针：可以改变它所指向的内存区域里面的值，同时也可以指向其他的内存区域</p>
-<p>常量指针：所指向的内存地址可以发生改变，但不能改变该内存区域里面的值</p>
-<p>指针常量：指向的内存地址不可变，但内存地址中存入的数据可以发生改变</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-type">int</span> i=<span class="hljs-number">10</span>;<br><span class="hljs-type">int</span> j=<span class="hljs-number">20</span>;<br><span class="hljs-comment">//指针</span><br><span class="hljs-type">int</span>* pi=&amp;i;<br>pi=&amp;j  <span class="hljs-comment">//true</span><br>*pi=<span class="hljs-number">20</span>;<span class="hljs-comment">//true</span><br><span class="hljs-comment">//常量指针</span><br><span class="hljs-type">const</span> <span class="hljs-type">int</span>* pi=&amp;i;<br>pi=&amp;j  <span class="hljs-comment">//true</span><br>*pi=<span class="hljs-number">20</span>;<span class="hljs-comment">//false</span><br><span class="hljs-comment">//指针常量</span><br><span class="hljs-type">int</span>* <span class="hljs-type">const</span> pi=&amp;i;<br>pi=&amp;j; <span class="hljs-comment">//false</span><br>*pi=<span class="hljs-number">20</span>;<span class="hljs-comment">//true</span><br></code></pre></td></tr></table></figure>
+                <h2 id="多态的执行顺序"><a href="#多态的执行顺序" class="headerlink" title="多态的执行顺序"></a>多态的执行顺序</h2><ul>
+<li>多态中成员方法使用规则：编译看左边，运行看右边</li>
+<li>多态中，子类重写的方法，当super调用就是调用父类方法</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-comment">//假定Base b = new Derived（）; 调用执行b.methodOne（）后，输出结果是什么？</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Base</span><br>&#123;<br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">methodOne</span><span class="hljs-params">()</span><br>   &#123;<br>      System.out.print(<span class="hljs-string">&quot;A&quot;</span>);   <span class="hljs-comment">//3.输出A</span><br>      methodTwo();             <span class="hljs-comment">//4.未被super调用，使用子类重写方法methodTwo()方法</span><br>   &#125;<br> <br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">methodTwo</span><span class="hljs-params">()</span><br>   &#123;<br>      System.out.print(<span class="hljs-string">&quot;B&quot;</span>);  <span class="hljs-comment">//6.输出B</span><br>   &#125;<br>&#125;<br> <br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Derived</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Base</span><br>&#123;<br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">methodOne</span><span class="hljs-params">()</span>     <span class="hljs-comment">//1</span><br>   &#123;<br>      <span class="hljs-built_in">super</span>.methodOne();       <span class="hljs-comment">//2.super调用，使用父类methodOne（）方法</span><br>      System.out.print(<span class="hljs-string">&quot;C&quot;</span>);<br>   &#125;<br> <br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">methodTwo</span><span class="hljs-params">()</span><br>   &#123;<br>      <span class="hljs-built_in">super</span>.methodTwo();       <span class="hljs-comment">//5.super调用，使用父类methodTwo()方法</span><br>      System.out.print(<span class="hljs-string">&quot;D&quot;</span>);   <span class="hljs-comment">//7.输出D</span><br>   &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h2 id="指针数组和数组指针的区别"><a href="#指针数组和数组指针的区别" class="headerlink" title="指针数组和数组指针的区别"></a>指针数组和数组指针的区别</h2><p>指针数组：数组</p>
-<p>数组指针：指针</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-type">int</span>* pa[<span class="hljs-number">5</span>];  <span class="hljs-comment">//指针数组</span><br><span class="hljs-built_in">int</span>(*ap)[<span class="hljs-number">5</span>]; <span class="hljs-comment">//数组指针</span><br><br><span class="hljs-type">int</span> arr[<span class="hljs-number">5</span>] = &#123; <span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span> &#125;;<br>pa[<span class="hljs-number">0</span>] = arr;<br>cout &lt;&lt; <span class="hljs-string">&quot;pa[0]=&quot;</span> &lt;&lt; pa[<span class="hljs-number">0</span>] &lt;&lt; endl;   <span class="hljs-comment">//arr数组的内存地址也就是arr[0]的内存地址</span><br>cout &lt;&lt; <span class="hljs-string">&quot;*pa[0]=&quot;</span> &lt;&lt; *pa[<span class="hljs-number">0</span>] &lt;&lt; endl; <span class="hljs-comment">//arr[0]的值：1</span><br><br>ap = &amp;arr;<br>cout &lt;&lt; <span class="hljs-string">&quot;(*ap)=&quot;</span> &lt;&lt; *ap &lt;&lt; endl;    <span class="hljs-comment">//arr的内存地址</span><br>cout &lt;&lt; <span class="hljs-string">&quot;(*ap)[0]=&quot;</span> &lt;&lt; **ap &lt;&lt; endl; <span class="hljs-comment">//1</span><br>cout &lt;&lt; <span class="hljs-string">&quot;(*ap)[1]=&quot;</span> &lt;&lt; *(*ap+<span class="hljs-number">1</span>) &lt;&lt; endl; <span class="hljs-comment">//2</span><br></code></pre></td></tr></table></figure>
+<h2 id="异常代码段中值的返回"><a href="#异常代码段中值的返回" class="headerlink" title="异常代码段中值的返回"></a>异常代码段中值的返回</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Test</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        System.out.println(test()); <span class="hljs-comment">//2</span><br> <br>    &#125;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">test</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">temp</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">try</span> &#123;<br>            System.out.println(temp);  <span class="hljs-comment">//第一步：1</span><br>            <span class="hljs-keyword">return</span> ++temp; <span class="hljs-comment">//返回2，但不是直接返回，而是先放到临时空间中，等finally代码块代码执行完再返回</span><br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            System.out.println(temp);<br>            <span class="hljs-keyword">return</span> ++temp;<br>        &#125; <span class="hljs-keyword">finally</span> &#123;<br>            ++temp;<br>            System.out.println(temp);  <span class="hljs-comment">//3</span><br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h2 id="引用和常量引用"><a href="#引用和常量引用" class="headerlink" title="引用和常量引用"></a>引用和常量引用</h2><p>常量引用的值不能被修改</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-type">int</span> i=<span class="hljs-number">10</span>;<br><span class="hljs-type">double</span> j=<span class="hljs-number">20</span>;<br><span class="hljs-type">int</span>&amp; ref=i;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span>&amp; cref1=i;<span class="hljs-comment">//true</span><br><span class="hljs-type">const</span> <span class="hljs-type">int</span>&amp; cref2=<span class="hljs-number">10</span>;<span class="hljs-comment">//true</span><br><span class="hljs-type">const</span> <span class="hljs-type">int</span>&amp; cref3=j;<span class="hljs-comment">//true</span><br><br>ref=<span class="hljs-number">20</span>;   <span class="hljs-comment">//true</span><br>cref1=<span class="hljs-number">20</span>;  <span class="hljs-comment">//false</span><br></code></pre></td></tr></table></figure>
-
-<h2 id="引用和指针常量"><a href="#引用和指针常量" class="headerlink" title="引用和指针常量"></a>引用和指针常量</h2><p>相同点：在功能上它们是类似的</p>
-<p>不同点：引用只是给变量起了一个别名，不会占用内存空间，但指针常量会占用内存空间</p>
-<h2 id="值传递和引用传递"><a href="#值传递和引用传递" class="headerlink" title="值传递和引用传递"></a>值传递和引用传递</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-comment">//值传递</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">increment</span><span class="hljs-params">(<span class="hljs-type">int</span> num)</span> </span>&#123;<br>    num++;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-type">int</span> value = <span class="hljs-number">5</span>;<br>    <span class="hljs-built_in">increment</span>(value);<br>    <span class="hljs-comment">// value仍然为5，没有改变</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br>值传递是指将函数参数的值复制一份传递给函数。在函数内部，对参数进行修改不会影响到原始的变量<br><span class="hljs-comment">//引用传递</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">increment</span><span class="hljs-params">(<span class="hljs-type">int</span>&amp; num)</span> </span>&#123;<br>    num++;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-type">int</span> value = <span class="hljs-number">5</span>;<br>    <span class="hljs-built_in">increment</span>(value);<br>    <span class="hljs-comment">// value现在为6，被函数修改了</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br>引用传递是通过传递参数的引用而不是复制值来传递参数。这样，在函数内部对参数进行的修改会直接影响到原始变量<br></code></pre></td></tr></table></figure>
-
-<h2 id="尾置返回类型"><a href="#尾置返回类型" class="headerlink" title="尾置返回类型"></a>尾置返回类型</h2><p>采用尾置返回类型的方法返回一个数组</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-keyword">auto</span> <span class="hljs-title">createArray</span><span class="hljs-params">()</span> -&gt; <span class="hljs-type">int</span>* </span>&#123;<br>    <span class="hljs-type">int</span>* arr = <span class="hljs-keyword">new</span> <span class="hljs-type">int</span>[<span class="hljs-number">5</span>];  <span class="hljs-comment">// 创建一个包含5个整数的数组</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++) &#123;<br>        arr[i] = i + <span class="hljs-number">1</span>;  <span class="hljs-comment">// 初始化数组元素</span><br>    &#125;<br>    <span class="hljs-keyword">return</span> arr;  <span class="hljs-comment">// 返回数组指针</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">auto</span> result = <span class="hljs-built_in">createArray</span>();  <span class="hljs-comment">// 调用函数并接收返回的数组指针</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++) &#123;<br>        std::cout &lt;&lt; result[i] &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;  <span class="hljs-comment">// 输出数组元素</span><br>    &#125;<br>    <span class="hljs-keyword">delete</span>[] result;  <span class="hljs-comment">// 释放内存</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
-
+<p> finally代码块在return中间执行。return的值会被放入临时空间，然后执行finally代码块，如果finally中有return，会刷新临时空间的值，方法结束返回临时空间值 </p>
+<p>当出现多个catch块时，应该先处理小异常，再处理大异常，也就是把父类异常的catch块放到处理子类异常的catch块之后</p>
+<h2 id="equals方法注意事项"><a href="#equals方法注意事项" class="headerlink" title="equals方法注意事项"></a>equals方法注意事项</h2><p>使用equals方法对对象内容进行比较时，要注意比较的双方应该是同一数据类型</p>
+<p>在使用equals方法时要避免空指针异常</p>
+<h2 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h2><p>作用：将数据长久的保存在磁盘里面</p>
+<p>方式：实现序列化接口： Serializable ，使用transient关键字修饰变量不能被序列化，static变量不管有没有加transient都不可以被序列化</p>
+<h2 id="数据类型的转变"><a href="#数据类型的转变" class="headerlink" title="数据类型的转变"></a>数据类型的转变</h2><p>只要两个操作数中有一个是double类型的，另一个将会被转换成double类型，并且结果也是double类型，如果两个操作数中有一个是float类型的，另一个将会被转换为float类型，并且结果也是float类型，如果两个操作数中有一个是long类型的，另一个将会被转换成long类型，并且结果也是long类型，否则（操作数为：byte、short、int 、char），两个数都会被转换成int类型，并且结果也是int类型。 </p>
+<p>在数据类型的转换中：由大到小需要强制转换，由小到大不需要</p>
+<h2 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h2><ul>
+<li>构造方法的名字必须和类名一致</li>
+<li>构造方法没有返回值，返回的是一个类，也不能用void修饰</li>
+<li>构造方法不能是抽象的、静态的、最终的、同步的也就是说，他不能通过abstract、static、final、synchronized关键字修饰</li>
+</ul>
+<h2 id="实例变量、类变量、局部变量"><a href="#实例变量、类变量、局部变量" class="headerlink" title="实例变量、类变量、局部变量"></a>实例变量、类变量、局部变量</h2><p>实例变量： 也叫对象变量、类成员变量；从属于类由类生成对象时，才分配存储空间，各对象间的实例变量互不干扰，能通过对象的引用来访问实例变量 </p>
+<p>类变量： 也叫静态变量，是一种比较特殊的实例变量，用static关键字修饰；一个类的静态变量，所有由这类生成的对象都共用这个类变量，类装载时就分配存储空间。一个对象修改了变量，则所以对象中这个变量的值都会发生改变。 </p>
+<p>局部变量： 方法中或者某局部块中声明定义的变量或方法的参数被称为局部变量 </p>
+<h2 id="接口和抽象类的区别"><a href="#接口和抽象类的区别" class="headerlink" title="接口和抽象类的区别"></a>接口和抽象类的区别</h2><ul>
+<li><p>接口是行为的抽象，是一种行为的规范，接口是like a的关系；抽象是对类的抽象，是一种模板设计，抽象类是is a的关系</p>
+</li>
+<li><p>接口没有构造方法，而抽象类有构造方法</p>
+</li>
+<li><p>接口可以多实现，但抽象类只能单继承</p>
+</li>
+<li><p>接口成员变量默认为public static final，必须赋初值，不能被修改；其所有的成员方法都是public abstract的。抽象类中成员变量默认是default，可在子类中被重新定义，也可以被重新赋值；抽象方法被abstract修饰，不能被private、static、synchronized和native等修饰，必须以分号结尾，不能带花括号。</p>
+<p>注：JDK1.8中对接口增加了新的特性</p>
+</li>
+<li><p>默认方法（default method）：JDK1.8允许给接口添加非抽象的方法实现，但必须使用default关键字修饰；定义的默认方法可以不被子类所实现，但只能被实现的子类的对象所调用；如果子类实现了多个接口，并且这些接口包含一样的默认方法，则子类必须重写默认方法；</p>
+</li>
+<li><p>静态方法（static method）：JDK1.8中允许使用static关键字修饰一个方法，并提供实现，称为接口静态方法。接口静态方法只能通过接口调用（接口名.静态方法名）</p>
+</li>
+</ul>
+<h2 id="GC垃圾回收器"><a href="#GC垃圾回收器" class="headerlink" title="GC垃圾回收器"></a>GC垃圾回收器</h2><p>垃圾回收器只针对Java堆进行垃圾回收， 堆用于存放所有对象，是线程共享的 </p>
+<h2 id="Java程序初始化顺序"><a href="#Java程序初始化顺序" class="headerlink" title="Java程序初始化顺序"></a>Java程序初始化顺序</h2><ul>
+<li>父类的静态代码块</li>
+<li>子类的静态代码块</li>
+<li>父类的普通代码块</li>
+<li>父类的构造代码块</li>
+<li>子类的普通代码块</li>
+<li>子类的构造方法</li>
+</ul>
 
                 
               </div>
@@ -287,27 +317,13 @@
             <div>
               <div class="post-metas my-3">
   
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
       
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/C/" class="category-chain-item">C++</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
+        <a href="/tags/java%E5%9F%BA%E7%A1%80/" class="print-no-link">#java基础</a>
+      
     </div>
-  
   
 </div>
 
@@ -317,8 +333,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>C++基础知识</div>
-      <div>https://cqqzyw.github.io/2023/07/20/C++/</div>
+      <div>Java基础</div>
+      <div>https://cqqzyw.github.io/2023/07/21/Java基础/</div>
     </div>
     <div class="license-meta">
       
@@ -330,7 +346,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>July 20, 2023</div>
+          <div>July 21, 2023</div>
         </div>
       
       
@@ -362,9 +378,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/07/20/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/" title="Java多线程">
+                      <a href="/2023/07/21/SQL/" title="MySQL">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Java多线程</span>
+                        <span class="hidden-mobile">MySQL</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -372,8 +388,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/07/19/JVM/" title="Hello JVM">
-                        <span class="hidden-mobile">Hello JVM</span>
+                      <a href="/2023/07/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" title="计算机网络">
+                        <span class="hidden-mobile">计算机网络</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
